@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		th{background:#ccc;cursor:pointer;}
+	</style>
+</head>
+<body>
+	<table id="table" border="1">
+		<thead>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>陈建</td>
+				<td>9</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>赵丹利</td>
+				<td>22</td>
+				<td>女</td>
+			</tr>
+			<tr>
+				<td>李四</td>
+				<td>33</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>谢道蕴</td>
+				<td>29</td>
+				<td>女</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		window.onload = function(){
+			var oTable = document.getElementById('table');
+			var oTh = oTable.getElementsByTagName('th');
+			var oTbody = document.getElementsByTagName('tbody')[0];
+			var oTr = oTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+			console.log(oTh);
+			console.log(oTr);
+			var obj = {}
+			for(var i=0;i<oTh.length;i++){
+				obj[i] = "";
+				;(function(j){
+					oTh[j].onclick = function(){
+						toSort(j);
+					}
+				})(i)
+			}
+
+
+			function toSort(index){
+				if(obj[index]==""||obj[index]=="asc"){
+					console.log(111)
+					for(var i=1;i<oTr.length;i++){
+						for(var j=0;j<oTr.length-i;j++){
+							if(parseInt(oTr[j].children[index].innerHTML)){
+								if(parseFloat(oTr[j].children[index].innerHTML)>parseFloat(oTr[j+1].children[index].innerHTML)){
+									oTbody.insertBefore(oTr[j+1],oTr[j])
+								}
+							}else{
+								if(oTr[j].children[index].innerHTML>oTr[j+1].children[index].innerHTML){
+									oTbody.insertBefore(oTr[j+1],oTr[j])
+								}
+							}
+							
+						}
+					}
+					obj[index] = 'desc';
+				}else{
+					for(var i=1;i<oTr.length;i++){
+						for(var j=0;j<oTr.length-i;j++){
+							if(parseInt(oTr[j].children[index].innerHTML)){
+								if(parseFloat(oTr[j].children[index].innerHTML)<parseFloat(oTr[j+1].children[index].innerHTML)){
+									oTbody.insertBefore(oTr[j+1],oTr[j])
+								}
+							}else{
+								if(oTr[j].children[index].innerHTML<oTr[j+1].children[index].innerHTML){
+									oTbody.insertBefore(oTr[j+1],oTr[j])
+								}
+							}
+						}
+					}
+					obj[index] = 'asc';
+				}
+			}
+
+
+		}
+	</script>
+</body>
+</html>
