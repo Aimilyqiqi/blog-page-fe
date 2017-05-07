@@ -1,0 +1,8 @@
+/*body{background: #000000;}*/
+.container{width:1200px;margin: 0 auto;}
+	.container .title{margin-top:20px;padding-left:15px;font-size:16px;font-weight:normal;height:35px;line-height: 35px;border-left:5px solid #ccc;}
+	.main{margin: 50px 0;}
+	.main p{float:left;margin-bottom: 20px;}
+	.left-new{background: #ffffff;border:1px solid #000000;width:498px;height:298px;padding:50px 100px;text-indent: 2em;}
+	.right-img{border:1px solid #000000;width:398px;height:398px;}
+	.right-img img{width:398px;height:398px;}
